@@ -1,0 +1,164 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			// HELPER FUNCTIONS
+			function randomInt(max) {
+				return parseInt(Math.random() * max);
+			}
+
+			function randInArray(array) {
+				return array[randomInt(array.length)];
+			}
+
+			function randInArrays() {
+				const array = arguments[randomInt(arguments.length)];
+				return array[randomInt(array.length)];
+			}
+
+			// DATA
+			const nameHighFirstM=["Acelin","Adar","Aeneas","Ailen","Aindreas","Alaric","Allard","Altair","Anan","Athan","Atherton","Azriel","Ballard","Bardo","Barrett","Bevan","Blaize","Brenainn","Brencis","Brody","Cade","Caedmon","Calder","Caton","Chalfont","Chalmers","Chay","Chilton","Cornelius","Cosmo","Cullen","Cyrus","Daegal","Dallan","Damek","Dante","Darius","Delano","Deron","Derwin","Dilwyn","Draigh","Earthan","Einar","Eiran","Eldridge","Elfed","Eliphas","Elwin","Emlyn","Eoin","Ewart","Finn","Fontayne","Forrest","Frewin","Gabriel","Gaian","Galen","Gerard","Goran","Gunnar","Heath","Innis","Jasion","Jorah","Kadir","Kaine","Kaspar","Kayne","Keene","Killian","Laramie","Laris","Lars","Lazar","Leander","Leif","Leland","Lucian","Lucius","Maddock","Marden","Mars","Mistral","Niam","Nicholas","Oberon","Osran","Panas","Paxton","Pilan","Rainer","Rehan","Rune","Saul","Sol","Tade","Thayer","Tierney","Tiordan","Torin","Vivian","Ward","Wayde","Wolfe","Zen","Zohar"];
+			const nameHighFirstF=["Abena","Acacia","Adaire","Adisa","Adonia","Aenwyn","Agate","Ailana","Aileen","Ailey","Akiye","Alana","Alani","Albertine","Alecto","Alexa","Alfhild","Alicia","Amaranth","Amaryllis","Ametrine","Anastasia","Anemone","Angelic","Anise","Antha","Aqua","Arabelle","Aretha","Arietta","Aris","Armina","Artemise","Asha","Ashia","Astra","Auria","Aurora","Azalea","Azami","Blossom","Bluebell","Branwen","Brenna","Briar","Brielle","Cadence","Calla","Carlyn","Cassia","Cedonia","Celestia","Celestina","Circe","Cliona","Cora","Coral","Crystal","Daire","Dawn","Destiny","Devi","Deville","Eartha","Ebony","Echo","Electra","Elenwen","Elvira","Ember","Esadora","Euphenia","Eva","Faba","Fae","Fawn","Ferox","Filix","Fortuna","Ginevra","Grace","Harmony","Hylee","Indigo","Ira","Iris","Isidora","Isidore","Jinx","Karin","Keeva","Kerrigan","Kestrel","Kira","Lilura","Lucinda","Luna","Lux","Maera","Maescia","Maev","Maya","Medea","Melody","Mia","Misty","Morena","Myrna","Mystia","Nina","Nissa","Norae","Onyx","Opal","Paige","Pearl","Peony","Pepper","Phoenix","Raine","Ravyn","Rawena","River","Rosina","Sacha","Salina","Serafina","Serafine","Seren","Serena","Silver","Skye","Starla","Summer","Tarja","Tatiana","Tempest","Tia","Xantha"];
+			const nameHighFamily = ["Abiate","Abrami","Acerbi","Acordolo","Albani","Alberti","Albirio","Alboresi","Babilonio","Barbacia","Barbadori","Barbalini","Barbani","Barbarigo","Barbaro","Barbato","Barbazini","Barbeta","Barbi","Barbieri","Barbo","Barbolini","Barozzi","Bellegno","Benedetti","Boldu","Bonzi","Bragadin","Bronzino","Caladri","Calandri","Calandrini","Caldarini","Calderara","Caldogne","Caliara","Callocci","Caloprara","Calvacanti","Calvane","Calza","Capello","Carafa","Cellini","Contarini","Corner","Crivelli","Dandolo","Donado","Donato","Falier","Farnese","Fiamolin","Fideli","Fiesi","Filiarchi","Fiocarda","Fiolario","Fiolo","Fioranati","Fiorensi","Fiorina","Fontana","Fonte","Foscari","Foscarini","Garzoni","Ghezzo","Gonzaga","Grimani","Gritti","Lego","Lignago","Lion","Loredan","Luppi","Malipiero","Marcello","Marin","Matelizi","Mauroceno","Memo","Michel","Michiel","Mocenigo","Morosini","Mudazo","Orsini","Palmio","Pisani","Priuli","Querini","Riccoboni","Rosso","Sanudo","Spizega","Tiepolo","Trevisan","Valier","Vasari","Venier","Viari","Visconti","Vitelli","Zane","Zani","Ziani","Zorzi","Zustignan"];
+			const nameHighMaskHouse = ["Ignis","Withers","Lydia","Stagira","Osmanali"];
+			const nameOrderSuffix = ["Perditi","Lexi","Fortuni","Lumini","Nebuli","Reguli","Animi","Quaesti"];
+
+			const nameMiddleFirstM = ["Abe","Abel","Abner","Abraham","Abram","Adam","Adelbert","Admiral","Adolphus","Alberto","Albin","Alden","Alec","Alford","Allie","Alois","Alonza","Aloysius","Alpha","Alton","Alva","Alvah","Alvie","Alvin","Alvis","Amos","Angus","Ansel","Anson","Antone","Arch","Arley","Armand","Art","Arvid","Asa","August","Avery","Axel","Bailey","Barton","Baxter","Bennett","Benton","Bernhart","Bertie","Bishop","Blaine","Booker","Boyd","Bryant","Buford","Burl","Burrell","Burton","Caleb","Carlton","Chauncey","Cicero","Claud","Clay","Cleo","Cleve","Clifford","Clifton","Colonel","Conrad","Corbett","Coy","Curley","Cyrus","Dale","Dalton","Damon","Dayton","Dee","Delmar","Dewey","Dewitt","Doc","Dorsey","Dow","Doyle","Duke","Earl","Earnest","Elbert","Elder","Eldon","Eldridge","Eli","Elias","Ellwood","Emmet","Enoch","Ephraim","Ezekiel","Fate","Fay","Fitzhugh","Foster","Freeman","Garnett","Garrett","Gene","General","Geo","Glover","Golden","Green","Grover","Gust","Hamp","Harlan","Harper","Harve","Haskell","Heber","Helmer","Hiram","Hobart","Hobert","Hollis","Hunter","Ignacio","Isham","Ivory","Jose","Judge","Judson","Jule","Julius","Junius","King","Lamar","Lambert","Larkin","Laverne","Leigh","Leland","Lem","Lew","Lon","Loyal","Lucien","Lyman","Mahlon","Major","Marshall","Mason","Maxwell","Maynard","Meyer","Miller","Milo","Minnie","Minor","Mont","Myron","Nels","Newell","Newt","Noble","Nolan","Odell","Odis","Ole","Ora","Oren","Orion","Otha","Parker","Peyton","Pierce","Porter","Preston","Prince","Reid","Rene","Rex","Roe","Rolla","Rowland","Royal","Ruel","Rush","Saul","Shelton","Silas","Sim","Sol","Squire","Sumner","Thad","Theron","Tobe","Troy","Van","Vance","Vaughn","Vester","Wade","Waverly","Webb","Webster","Weldon","Wilber","Worth"];
+			const nameMiddleFirstF = ["Ada","Adelia","Adella","Aileen","Aimee","Albina","Alda","Alene","Alicia","Alma","Alta","Althea","Alvina","Alyce","Anita","Annis","Ara","Ardella","Arie","Arline","Arrie","Audra","Aurelia","Aurora","Avis","Besse","Bethel","Beula","Blanche","Bulah","Callie","Cecilia","Celeste","Celestine","Celina","Charity","Clora","Cora","Coral","Corda","Della","Delma","Dessie","Dewey","Docia","Dovie","Ebba","Eda","Electa","Elmira","Elna","Elvina","Erie","Essie","Fae","Faith","Faye","Flora","Garnett","Gena","Golda","Golden","Grace","Helma","Hester","Honora","Hope","Icie","Ida","Ila","Iona","Isa","Jewell","Kittie","Lacy","Lala","Lavada","Laverne","Lea","Leatha","Leda","Lenna","Leola","Leona","Letha","Lida","Lorena","Lorene","Lovina","Lue","Luella","Luetta","Luna","Mae","Maye","Myra","Myrl","Myrle","Nena","Neta","Nita","Nola","Nona","Nova","Ocie","Odelia","Ola","Orpha","Paralee","Prudence","Queen","Rae","Reba","Rosa","Rose","Rosetta","Ruby","Salome","Selina","Sena","Thea","Thora","Tilda","Valeria","Vena","Verda","Verona","Viva","Wanda","Wilda","Yetta","Zelia","Zella","Zola","Zora"];
+			const nameProfessional = ["Aegis","Angel","Arrow","Ash","Azure","Ballista","Barb","Beauty","Blaze","Blesse","Blight","Blink","Blitz","Brass","Brook","Cat","Charm","Cloud","Clover","Comet","Cover","Crisis","Critter","Crux","Curse","Dagger","Dash","Dawn","Death","Destiny","Diamond","Dove","Ebony","Echo","Eclipse","Enigma","Envy","Essence","Fable","Fae","Faith","Faze","Feather","Feline","Fetch","Figment","Flair","Flame","Flow","Flower","Flux","Fortune","Gem","Ghost","Glitch","Gloom","Grimace","Haze","Hex","Hope","Huntress","Hush","Ivory","Jewel","Jinx","Karma","Kindle","Kiss","Lash","Light","Locus","Lore","Lotus","Lullaby","Luna","Mace","Mime","Mirage","Mischief","Misery","Mist","Mockingbird","Moon","Morose","Mouse","Myth","Nebula","Night","Nightshade","Nil","Numen","Oracle","Paradox","Peach","Pearl","Penumbra","Phantasma","Pickle","Primrose","Pyro","Queen","Quest","Quill","Rags","Rain","Raven","Riddle","Robin","Rogue","Rumor","Rush","Sabre","Sage","Scarf","Scotch","Scratch","Serenity","Shade","Shadow","Shepherd","Silence","Silver","Slice","Smile","Snare","Snowflake","Spark","Sparkle","Sparrow","Sphinx","Spice","Sprite","Squint","Starlight","Storm","Stranger","Thistle","Tide","Tigress","Trace","Trickster","Twilight","Twinkle","Umbra","Veil","Vex","Virtue","Vision","Web","Whisper","Wish","Witch","Zero"];
+
+			const nameNicknames = ["Aching","Active","Agile","Amazing","Ancient","Angry","Antique","Anxious","Arctic","Arid","Bad","Bare","Basic","Big","Bitter","Black","Blank","Bleak","Blind","Blissful","Blond","Blue","Boring","Brief","Bright","Broken","Bronze","Brown","Buzzing","Calm","Canine","Chief","Clean","Clever","Close","Closed","Clumsy","Coarse","Cold","Colossal","Complex","Cool","Corrupt","Crafty","Crazy","Creepy","Crisp","Critical","Crooked","Crystal","Dangerous","Dapper","Daring","Dark","Dazzling","Deep","Defiant","Dense","Direct","Dirty","Discrete","Distant","Dizzy","Double","Dual","Dust","Dusty","Eager","Early","Earnest","Enchanted","Faint","Fake","False","Famous","Fancy","Fast","Fat","Fatal","Father","Feline","Fickle","Fine","Fire","Firm","First","Fixed","Flat","Flimsy","Formal","Fresh","Frigid","Frosty","Frozen","Fuzzy","General","Gentle","Giant","Giving","Glass","Gleaming","Golden","Gorgeous","Graceful","Gracious","Grave","Grim","Grizzled","Grizzly","Guilty","Hairy","Handsome","Happy","Hard","Hasty","Haunting","Hefty","Hidden","Hoarse","Hollow","Honest","Honored","Humble","Humming","Hungry","Icy","Impish","Infinite","Intrepid","Iron","Jolly","Jumbo","Junior","Keen","Kind","Light","Little","Lone","Lonely","Long","Lost","Loud","Loyal","Lucky","Mad","Mellow","Merry","Mild","Miracle","Misty","Modest","Mother","Murky","Mute","Muted","Nervous","Odd","Old","Original","Pale","Perfect","Polar","Praying","Proud","Quick","Quiet","Reckless","Rough","Sad","Salty","Scarlet","Shiny","Shy","Silent","Silver","Sleepy","Slow","Snowy","Steel","Swift","Tense","Twilight","Twin","Twinkle","Vicious","Violet","Warm","Weeping","White","Wicked","Wise","Worried","Yawning","Young","Prowling"];
+			const nameWorkingFirst = ["Angel","Anomaly","Ash","Beak","Bling","Blinkey","Bones","Books","Bookworm","Box","Bucks","Bugs","Chance","Cinders","Cloak","Cloud","Cyclops","Dancer","Daydream","Desire","Doc","Doctor","Dragonfly","Dust","Elsewhere","Facade","Face","Feather","Feathers","Fiddles","Fix","Fluke","Frenzy","Ghost","Gloom","Heat","Hive","Hog","Imp","Jams","Jester","Leech","Longshot","Magma","Mask","Mime","Moon","Mopes","Nemo","Nightmare","Nocturne","Patch","Pickle","Puzzles","Random","Rascal","Riddle","Risk","Rogue","Rubble","Saber","Silence","Silver","Skins","Skit","Skitters","Sky","Sly","Smokes","Smokey","Snout","Snow","Soot","Specter","Spirit","Spot","Spots","Sprite","Tags","Tooth","Triclops","Whisper","Wicked","Wings","Wink","Wither","Zero"];
+
+			const nameAlloyFull = ["Al-alnico","Ur-duralumin","It-italma","Ock-lockalloy","Is-bismanol","Ich-nichrome","Ell-stellite","Ult-ultimet","Ill-billon","Ass-brass","Onz-bronze","Al-alga","Al-galinstan","Od-rhodite","Ern-fernico","Elv-elvinar","Ag-magnox","El-electrum","Ew-pewter"];
+			const nameAlloyStart = ["Al-alnic","Ur-duralum","It-italm","Ock-lockall","Is-bisman","Ich-nichrom","Ell-stell","Ult-ultim","Ill-bill","Onz-bronz","Al-alg","Al-galinst","Od-rhod","Ern-fernic","Elv-elvin","Ag-magn","El-electr","Ew-pewt"];
+			const nameAlloyEnd = ["a","i","ia","o","ol","oy","e","ite","ar","ox"];
+
+			const titleTypeMale=["Abbot","Apostle","Baron","Commander","Consul","Counselor","Curator","Delegate","Divinity","Elder","Eminence","Exarch","Father","Grand Master","Herald","High Priest","King","Liaison","Lord","Magi","Master","Minister","Missionary","Novice","Overlord","Paladin","Paragon","Patriarch","Preacher","Priest","Prime","Prince","Reverend","Sage","Seer","Tribune","Warrior"];
+			const titleTypeFemale=["Abbess","Apostle","Baronness","Commander","Consul","Counselor","Curator","Delegate","Divinity","Elder","Eminence","Exarch","Grand Master","Herald","High Priestess","Lady","Liaison","Magi","Master","Matriarch","Minister","Missionary","Mother","Novice","Overlady","Paladin","Paragon","Preacher","Priestess","Prime","Princess","Queen","Reverend","Sage","Seer","Tribune","Warrior","Witch"];
+			const titleDescription1=["Anguish","Aspects","Balance","Battle","Beauty","Bells","Birth","Blades","Blood","Brass","Brawn","Canvasses","Caves","Chains","Champions","Change","Chaos","Charity","Choice","Cinders","Clouds","Cold","Color","Conflict","Courage","Crowns","Crows","Darkness","Death","Deceit","Defeat","Delights","Desire","Division","Dreams","Dust","Effigies","Elegance","Envy","Eternity","Existence","Fangs","Fear","Feasts","Fire","Fires","Flames","Flesh","Freedom","Funerals","Gardens","Ghosts","Glass","Gold","Harmony","Hate","Hatred","Health","Heat","Ice","Independence","Infernos","Insanity","Iron","Judgment","Justice","Knowledge","Liberty","Lies","Light","Marble","Masks","Mercy","Mirrors","Misery","Nightmares","Nights","Omens","Panic","Passion","Poison","Pride","Prisons","Punishments","Reason","Rebirth","Riddles","Sanity","Scales","Servants","Silver","Slavery","Slaves","Smiles","Smoke","Snow","Solitude","Songs","Sorrow","Spirits","Steel","Stone","Storms","Sunlight","Thunder","Truths","Victory","Voices","Wisdom","the Blind","the Brave","the Cold","the Dark","the End","the Fire","the Flame","the Flock","the Garden","the Inferno","the Night","the Sun","the Wicked","the World"];
+			const titleDescription2=["Abandoned","Abusive","Achored","Acrid","Adamant","Aged","Aggressive","Ambitious","Ancient","Angelic","Angry","Anguished","Animated","Bitter","Blind","Careless","Colossal","Corrupt","Corrupted","Cruel","Dark","Deaf","Death","Defiant","Delirious","Demonic","Deranged","Devoted","Diligent","Disguised","Drunk","Elite","Enchanted","Enraged","Eternal","Ethereal","Euphoric","Exalted","Fearless","Forsaken","Gargantuan","Golden","Graceful","Grand","Grave","Great","Grieving","Grim","Grounded","Hallowed","Hollow","Hungry","Infernal","Insane","Juvenile","Living","Luminous","Macabre","Mad","Marked","Mindless","Monstrous","Mute","Mysterious","Nocturnal","Noxious","Parched","Petty","Prime","Putrid","Rabid","Radiant","Reckless","Righteous","Serene","Shallow","Somber","Stormy","Tired","Twin","Vigilant","Violent","Voiceless","Volatile","Warped","Wicked","Wild","Wretched","Zealous"];
+
+			// COMPILED FUNCTIONS
+			function genHighFirstM() {
+				return randInArrays(nameHighFirstM);
+			}
+			function genHighFirstF() {
+				return randInArrays(nameHighFirstF);
+			}
+			function genHighFamily() {
+				return randInArrays(nameHighFamily);
+			}
+			function genHighMaskHouse() {
+				return randInArrays(nameHighMaskHouse);
+			}
+			function genOrderSuffix() {
+				return randInArrays(nameOrderSuffix);
+			}
+
+			function genMiddleFirstM() {
+				return randInArrays(nameMiddleFirstM);
+			}
+			function genMiddleFirstF() {
+				return randInArrays(nameMiddleFirstF);
+			}
+			function genMiddleProfessional() {
+				return randInArrays(nameProfessional);
+			}
+
+			function genNickname() {
+				return randInArrays(nameNicknames);
+			}
+			function genWorkingFirstM() {
+				return randInArrays(nameMiddleFirstM, nameWorkingFirst);
+			}
+			function genWorkingFirstF() {
+				return randInArrays(nameMiddleFirstF, nameWorkingFirst);
+			}
+
+			function genForgedName() {
+				return randInArrays(nameAlloyFull);
+			}
+			function genForgedNameStart() {
+				return randInArrays(nameAlloyStart);
+			}
+			function genForgedNameEnd() {
+				return randInArrays(nameAlloyEnd);
+			}
+
+			// NAME FUNCTIONS
+			function genHighM() {
+				switch(randomInt(4)) {
+					case 0:	return `${genHighFirstM()} ${genHighFamily()}-${genHighMaskHouse()}`;
+					case 1:	return `${genHighFirstM()} Vetus-${genHighMaskHouse()}`;
+					default:return `${genHighFirstM()} ${genHighFamily()}-${genOrderSuffix()}`;
+				}
+			}
+			function genHighF() {
+				switch(randomInt(4)) {
+					case 0:	return `${genHighFirstF()} ${genHighFamily()}-${genHighMaskHouse()}`;
+					case 1:	return `${genHighFirstF()} Vetus-${genHighMaskHouse()}`;
+					default:return `${genHighFirstF()} ${genHighFamily()}-${genOrderSuffix()}`;
+				}
+			}
+			function genMiddleM() {
+				return `${genMiddleFirstM()} ${genMiddleProfessional()}`;
+			}
+			function genMiddleF() {
+				return `${genMiddleFirstF()} ${genMiddleProfessional()}`;
+			}
+			function genWorkingM() {
+				return `${genNickname()} ${genWorkingFirstM()}`;
+			}
+			function genWorkingF() {
+				return `${genNickname()} ${genWorkingFirstF()}`;
+			}
+			function genForged() {
+				switch(randomInt(2)) {
+					case 0:	return `${genForgedName()}`;
+					case 1:	return `${genForgedNameStart()}${genForgedNameEnd()}`;
+				}
+			}
+			function genElder() {
+				switch(randomInt(4)) {
+					case 0: return `${randInArray(titleTypeMale)} of ${randInArray(titleDescription1)}`;
+					case 1: return `The ${randInArray(titleDescription2)} ${randInArray(titleTypeMale)}`;
+					case 2: return `${randInArray(titleTypeFemale)} of ${randInArray(titleDescription1)}`;
+					case 3: return `The ${randInArray(titleDescription2)} ${randInArray(titleTypeFemale)}`;
+				}
+			}
+			$(function() {
+				let ur_table = '';
+				ur_table += '<tr>';
+				ur_table += '<td><b>High Class (M)</b></td>';
+				ur_table += '<td><b>High Class (F)</b></td>';
+				ur_table += '<td><b>Middle Class (M)</b></td>';
+				ur_table += '<td><b>Middle Class (F)</b></td>';
+				ur_table += '<td><b>Working Class (M)</b></td>';
+				ur_table += '<td><b>Working Class (F)</b></td>';
+				ur_table += '<td><b>Forged</b></td>';
+				ur_table += '<td><b>Elder</b></td>';
+				ur_table += '</tr>';
+				for(var i = 0; i < 20; i++) {
+					ur_table += '<tr>';
+					ur_table += `<td>${genHighM()}</td>`;
+					ur_table += `<td>${genHighF()}</td>`;
+					ur_table += `<td>${genMiddleM()}</td>`;
+					ur_table += `<td>${genMiddleF()}</td>`;
+					ur_table += `<td>${genWorkingM()}</td>`;
+					ur_table += `<td>${genWorkingF()}</td>`;
+					ur_table += `<td>${genForged()}</td>`;
+					ur_table += `<td>${genElder()}</td>`;
+					ur_table += '</tr>';
+				}
+				$( "#UrNames" ).html(ur_table);
+			});
+		</script>
+	</head>
+	<body>
+		<h2>Ur</h2>
+		<table id='UrNames'>
+		</table>
+		<button onclick='location.reload()'>Regenerate</button>
+	</body>
+</html>
